@@ -26,17 +26,26 @@ app.get('/api', (req, res, next) => {
     let day = weekday[date.getDay()];
     const github = "https://github.com/Awe-Elizabeth/hng-task1/blob/main/server.js";
     const repo = "https://github.com/Awe-Elizabeth/hng-task1";
-    let year = date.getUTCFullYear()
-    let uDate =  date.getUTCDate()
-    let hour = date.getUTCHours()
 
-    var utcDate = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(),
-                    date.getUTCDate(), date.getUTCHours(),
-                    date.getUTCMinutes(), date.getUTCSeconds());
+  //  var utcDate = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(),
+                    // date.getUTCDate(), date.getUTCHours(),
+                    // date.getUTCMinutes(), date.getUTCSeconds());
 
-    utcDate = new Date(utcDate);
+    //utcDate = new Date(utcDate);
     // console.log(new Date(utcDate));
     // console.log(date.toISOString());
+
+    const now = new Date();
+
+    const uyear = now.getUTCFullYear();
+    const month = now.getUTCMonth() + 1;
+    const uday = now.getUTCDate();
+    const hours = now.getUTCHours();
+    const minutes = now.getUTCMinutes();
+    const seconds = now.getUTCSeconds();
+    //const milliseconds = now.getUTCMilliseconds();
+
+    utcDate = `${uyear}-${month}-${uday}T${hours}:${minutes}:${seconds}Z`;
 
     res.status(200).json({
         slack_name: req.query.slack_name,
