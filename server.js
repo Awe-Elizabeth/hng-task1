@@ -19,11 +19,17 @@ app.get('/', (req, res, next) => {
     const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     const date = new Date();
     let day = weekday[date.getDay()];
+    const github = "https://github.com/Awe-Elizabeth/hng-task1/blob/main/server.js";
+    const repo = "https://github.com/Awe-Elizabeth/hng-task1";
+    const utcDate = date.toISOString();
 
     res.status(200).json({
-        slack_name: 'Elizabeth',
+        slack_name: req.query.slack_name,
         current_day: day,
-        utc_time: date,
-        track: "backend",
+        utc_time: utcDate,
+        track: req.query.track,
+        github_file_url: github,
+        github_repo_url: repo,
+        status_code: 200
     });
 })
