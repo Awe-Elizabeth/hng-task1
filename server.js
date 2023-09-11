@@ -52,7 +52,7 @@ app.get('/api', (req, res, next) => {
     //const milliseconds = now.getUTCMilliseconds();
 
     utcDate = `${uyear}-0${month}-${uday}T${hours}:${minutes}:${seconds}Z`;
-    console.log(utcDate);
+    //console.log(utcDate);
 
     res.status(200).json({
         slack_name: req.query.slack_name,
