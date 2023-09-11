@@ -13,6 +13,19 @@ const server = app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 })
 
+const date = new Date();
+
+// var utcDate = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(),
+// date.getUTCDate(), date.getUTCHours(),
+// date.getUTCMinutes(), date.getUTCSeconds());
+
+// utcDate = new Date(utcDate);
+// console.log(new Date(utcDate));
+
+
+
+
+
 app.get('/',  (req, res) => {
     res.status(200).json({
         message: "Hello World"
@@ -22,30 +35,24 @@ app.get('/',  (req, res) => {
 app.get('/api', (req, res, next) => {
 
     const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-    const date = new Date();
+    
     let day = weekday[date.getDay()];
     const github = "https://github.com/Awe-Elizabeth/hng-task1/blob/main/server.js";
     const repo = "https://github.com/Awe-Elizabeth/hng-task1";
 
-  //  var utcDate = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(),
-                    // date.getUTCDate(), date.getUTCHours(),
-                    // date.getUTCMinutes(), date.getUTCSeconds());
-
-    //utcDate = new Date(utcDate);
-    // console.log(new Date(utcDate));
-    // console.log(date.toISOString());
-
+  
     const now = new Date();
 
     const uyear = now.getUTCFullYear();
-    const month = now.getUTCMonth() + 1;
+    const month = now.getUTCMonth()+1;
     const uday = now.getUTCDate();
     const hours = now.getUTCHours();
     const minutes = now.getUTCMinutes();
     const seconds = now.getUTCSeconds();
     //const milliseconds = now.getUTCMilliseconds();
 
-    utcDate = `${uyear}-${month}-${uday}T${hours}:${minutes}:${seconds}Z`;
+    utcDate = `${uyear}-0${month}-${uday}T${hours}:${minutes}:${seconds}Z`;
+    console.log(utcDate);
 
     res.status(200).json({
         slack_name: req.query.slack_name,
