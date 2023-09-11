@@ -26,7 +26,17 @@ app.get('/api', (req, res, next) => {
     let day = weekday[date.getDay()];
     const github = "https://github.com/Awe-Elizabeth/hng-task1/blob/main/server.js";
     const repo = "https://github.com/Awe-Elizabeth/hng-task1";
-    const utcDate = date.toISOString();
+    let year = date.getUTCFullYear()
+    let uDate =  date.getUTCDate()
+    let hour = date.getUTCHours()
+
+    var utcDate = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(),
+                    date.getUTCDate(), date.getUTCHours(),
+                    date.getUTCMinutes(), date.getUTCSeconds());
+
+    utcDate = new Date(utcDate);
+    // console.log(new Date(utcDate));
+    // console.log(date.toISOString());
 
     res.status(200).json({
         slack_name: req.query.slack_name,
